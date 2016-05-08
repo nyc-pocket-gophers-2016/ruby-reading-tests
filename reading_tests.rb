@@ -22,3 +22,6 @@ def vowels(string)
   string.split.select{ |idx| idx.match(/[aeiou]/) }
 end
 
+def start_with_c?(string)
+  string.split.select {|word| word.start_with?('c')}.length == string.split.length
+end
