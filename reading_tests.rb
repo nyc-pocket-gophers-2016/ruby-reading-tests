@@ -63,7 +63,7 @@ def super_compact(array)
 end
 
 def mode(array)
-  
+  array.max_by {|item| array.count(item)}
 end
 
 def symbolize(array)
