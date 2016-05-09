@@ -84,10 +84,142 @@ def start_with_c?(str)
 
 end
 
-def titlecase(str)
+def titlecase(str) # I spent HOURS on this
+
+	str.split(/ |\_|\-/).map(&:capitalize).join(" ")
 
 end
 
+# doesn't work on second test:
+# def delete_last(str, num)
 
+# 	str.reverse!
+	
+# 	str = str.split("")
+	
+# 	i = 0
+	
+# 	while i < num
+# 	 str.delete_at(i)
+# 	 i += 1
+# 	end
+	
+# 	str.reverse!
+# 	str = str.join
 
+# end
 
+def delete_last(str, num)
+
+	num *= -1
+	
+	i = -1
+	
+	until i < num
+		str.slice!(i)
+		p str
+		i -= 1
+	end
+	
+	str
+
+end
+
+def to_money(num)
+
+	num = num.round(2)
+	
+	num = num.to_s
+	
+	num = '$' + num
+	
+	if num[-1] == '0'
+		if num[-2] == '.'
+			num += '0'
+		end
+	end
+
+	num
+	
+end
+
+def numeric?(num)
+
+if num.class == Float || num.class == Fixnum
+		return true
+	else
+		return false
+end
+
+end
+
+def mean(arr)
+
+	sum = 0
+	
+	arr.each do |n|
+		sum += n
+	end
+	
+	sum = sum.to_f
+
+	sum/arr.length
+
+end
+
+def super_compact(arr)
+
+	arr.compact!
+	
+	arr.select { |val| val.length > 0 }
+end
+
+def mode(arr)
+	
+	hash = {}
+	
+	arr.each do |val|
+		hash[val] = arr.count(val)
+	end
+
+	a = []
+	
+	hash.each do |key, value|
+		a << hash[key]
+	end
+	
+	a = winnow(a)
+	
+	hash.each do |key, value|
+		if hash[key] == a[0]
+			return key
+		else
+			hash[key]
+		end
+	end
+	
+end
+
+def winnow(arr) # use in tandem with mode
+	
+	return arr if arr.length == 1
+	
+	if arr[0] < arr[1]
+		arr.delete_at(0)
+		winnow(arr)
+	else
+		arr.delete_at(1)
+		winnow(arr)
+	end
+	
+end
+
+def symbolize(arr)
+	
+	arr.map! do |val|
+		val.to_sym
+	end
+	
+	arr
+	
+end

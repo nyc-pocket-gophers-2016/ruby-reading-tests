@@ -96,7 +96,6 @@ describe "numeric?" do
 end
 
 
-
 describe "mean" do
   it "calculates average" do
     arr = [1, 2, 3, 4]
