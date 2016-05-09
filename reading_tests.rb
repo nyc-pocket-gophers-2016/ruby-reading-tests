@@ -54,6 +54,24 @@ def numeric?(string)
   end
 end
 
+def mean(array)
+  array.reduce(:+).to_f/array.length.to_f
+end
+
+def super_compact(array)
+  array.reject {|idx| idx == '' || idx == nil || idx == []}
+end
+
+def mode(array)
+  
+end
+
+def symbolize(array)
+  array.map { |i| i.to_sym  }
+end
+
+
+
 
 
 
